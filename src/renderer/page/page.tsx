@@ -9,9 +9,10 @@ export class FluxExtensionExamplePage extends React.Component<{ extension: Rende
     super(props);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     console.log("componentDidMount");
-    IpcRenderer.getInstance().invoke("test-invoke", "Hello, world!");
+    const invokeReturn = await IpcRenderer.getInstance().invoke("test-invoke", "Hello, world!");
+    console.log("test-invoke return:", invokeReturn);
     IpcRenderer.getInstance().listen("test-event", (_event: any, data: any) => {
       console.log("data", data);
     });
