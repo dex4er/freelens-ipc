@@ -7,8 +7,8 @@ export class IpcMain extends Main.Ipc {
     super(extension);
   }
 
-  static createInstance = Main.Ipc.createInstance;
-  static getInstance = Main.Ipc.getInstance;
+  static createInstance: typeof Main.Ipc.createInstance = Main.Ipc.createInstance;
+  static getInstance: typeof Main.Ipc.getInstance = Main.Ipc.getInstance;
 
   handle(channel: string, listener: (event: Electron.IpcMainEvent, ...args: any[]) => any): void {
     super.handle(channel, listener);

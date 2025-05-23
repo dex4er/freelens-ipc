@@ -1,10 +1,8 @@
 import { Renderer } from "@freelensapp/extensions";
-
 import React from "react";
-import { IpcRenderer } from "./helpers/renderer";
+import { IpcRenderer } from "../helpers/renderer";
 
-
-import "./page.scss";
+import styleInline from "./page.scss?inline";
 
 export class FluxExtensionExamplePage extends React.Component<{ extension: Renderer.LensExtension }> {
   constructor(props: { extension: Renderer.LensExtension }) {
@@ -14,19 +12,19 @@ export class FluxExtensionExamplePage extends React.Component<{ extension: Rende
   componentDidMount() {
     console.log("componentDidMount");
     IpcRenderer.getInstance().invoke("test-invoke", "Hello, world!");
-    IpcRenderer.getInstance().listen("test", (event: any, data: any) => {
+    IpcRenderer.getInstance().listen("test", (_event: any, data: any) => {
       console.log("data", data);
-      
     });
-    
-    
   }
 
   render() {
     return (
-      <div className="example-page">
-        <h1>Example extension</h1>
-      </div>
+      <>
+        <style>{styleInline}</style>
+        <div className="example-page">
+          <h1>Example extension</h1>
+        </div>
+      </>
     );
   }
 }

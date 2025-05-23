@@ -5,7 +5,6 @@ export class IpcRenderer extends Renderer.Ipc {
     super(extension);
   }
 
-  static createInstance = Renderer.Ipc.createInstance;
-  static getInstance = Renderer.Ipc.getInstance;
+  static createInstance: typeof Renderer.Ipc.createInstance = Renderer.Ipc.createInstance;
+  static getInstance: typeof Renderer.Ipc.getInstance = Renderer.Ipc.getInstance;
 }
-
