@@ -3,15 +3,15 @@ import log from "electron-log/main";
 import { IpcMain } from "./helpers/main";
 
 export default class FluxExtensionExampleMain extends Main.LensExtension {
-  private ipc: IpcMain;
+  // private ipc: IpcMain;
 
   onActivate(): Promise<void> | void {
-    this.ipc = IpcMain.createInstance(this);
+    const ipc = IpcMain.createInstance(this);
 
-    this.ipc.handle("test-invoke", (_event: any, _data: any) => {
+    ipc.handle("test-invoke", (_event: any, _data: any) => {
       setTimeout(() => {
         log.info("broadcasting...");
-        this.ipc.broadcast("test", "Hello from main broadcast - " + new Date().toISOString());
+        ipc.broadcast("test", "Hello from main broadcast - " + new Date().toISOString());
       }, 1000);
     });
   }

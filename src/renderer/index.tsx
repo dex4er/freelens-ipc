@@ -4,10 +4,10 @@
  */
 
 import { Renderer } from "@freelensapp/extensions";
-// import { IpcRenderer } from "./helpers/renderer";
+import { IpcRenderer } from "./helpers/renderer";
 import { FluxExtensionExamplePage } from "./page/page";
 
-import svgIcon from "./src/icons/example.svg?raw";
+import svgIcon from "../icons/example.svg?raw";
 
 // @ts-ignore
 import React from "react";
@@ -22,7 +22,7 @@ export function FluxExtensionExampleIcon(props: Renderer.Component.IconProps) {
 
 export default class FluxExtensionExampleRenderer extends Renderer.LensExtension {
   onActivate() {
-    // const ipc = IpcRenderer.createInstance(this);
+    IpcRenderer.createInstance(this);
   }
 
   clusterPages = [
