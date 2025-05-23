@@ -12,7 +12,7 @@ export class FluxExtensionExamplePage extends React.Component<{ extension: Rende
   componentDidMount() {
     console.log("componentDidMount");
     IpcRenderer.getInstance().invoke("test-invoke", "Hello, world!");
-    IpcRenderer.getInstance().listen("test", (_event: any, data: any) => {
+    IpcRenderer.getInstance().listen("test-event", (_event: any, data: any) => {
       console.log("data", data);
     });
   }

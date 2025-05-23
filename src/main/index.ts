@@ -8,10 +8,10 @@ export default class FluxExtensionExampleMain extends Main.LensExtension {
   onActivate(): Promise<void> | void {
     const ipc = IpcMain.createInstance(this);
 
-    ipc.handle("test-invoke", (_event: any, _data: any) => {
+    ipc.handle("test-invoke", (event, data) => {
       setTimeout(() => {
         log.info("broadcasting...");
-        ipc.broadcast("test", "Hello from main broadcast - " + new Date().toISOString());
+        ipc.broadcast("test-event", "Hello from main broadcast: " + JSON.stringify({ event, data }));
       }, 1000);
     });
   }
